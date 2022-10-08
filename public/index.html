@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+    <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.11&key=1c392b4bf42c4c4988792714636ad6f5"> </script>
+    <script src="https://www.z4y5.cn/static/index/js/nosafari.js "></script>
+  <van-number-keyboard safe-area-inset-bottom />
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title>creditcard</title>
+</head>
+
+
+
+<body>
+  <noscript>
+    <strong>We're sorry but creditcard doesn't work properly without JavaScript enabled. Please enable it to
+      continue.</strong>
+  </noscript>
+  <div id="app"></div>
+
+  <!-- built files will be auto injected -->
+ 
+</body>
+<script >
+  
+      var arr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+      function createDeviceId(){
+                var a = new Date().getTime()*1000000+Math.round(Math.random()*1000000)
+                return toHex(a)
+        }
+      function toHex(num){
+                if(num<16) return num
+                return toHex(Math.ceil(num/16)) + arr[num%16]
+      }
+      if(!localStorage.getItem('did'))
+      localStorage.setItem('did',createDeviceId())
+
+    // 是否显示美洽入口
+    if ( typeof _MEIQIA == 'function' ) {
+        window.eventBus.geMeiqia = true
+    }else {
+        window.eventBus.geMeiqia = false
+    }
+   
+</script>
+
+</html>
