@@ -1,6 +1,6 @@
 <!-- 消息 -->
 <template>
-  <div>
+  <div style="background:#F9FAFE ;min-height: 100vh;">
     <van-nav-bar
       class="agent_nav theme_bg"
       style="background: none"

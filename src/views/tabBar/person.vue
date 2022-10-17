@@ -21,7 +21,6 @@ import {
   brandQuery
 } from '@/api/showBrand'
 import QRCode from 'qrcodejs2'
-import tabbar from '@/components/tabbar'
 
 export default {
   name: "sharePage",
@@ -37,7 +36,6 @@ export default {
   },
   components: {
     [NavBar.name]: NavBar,
-    tabbar
   },
   created() {
     this.phone = localStorage.getItem("phone")

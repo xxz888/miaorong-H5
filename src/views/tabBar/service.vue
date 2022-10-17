@@ -12,7 +12,7 @@
       <van-list v-model="loading" :finished="finished" finished-text="" @load="onLoad">
         <div class="list" v-show="active!=2">
           <div class="item" v-for="(item,i) in list" :key="i">
-            <div><img style="height:40px;width:auto" src="../../assets/contact/tit_logo.png"> <span>{{ item.createTime }}</span></div>
+            <div><img style="height:24px;width:auto" src="../../assets/contact/tit_logo.png"> <span>{{ item.createTime }}</span></div>
             <p>{{ item.content }}</p>
           </div>
         </div>
@@ -181,7 +181,6 @@ export default {
   color: #333;
   font-size: 12px;
   padding: 10px;
-  margin: 20px auto;
   font-size: 15px;
   border-radius: 5px;
 }

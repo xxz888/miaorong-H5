@@ -20,25 +20,25 @@
           </ul>
         </div>
         <div class="profit_share_cont">
-          <div class="profit_type_top">
+          <!-- <div class="profit_type_top">
             <div class="profit_type_top_bg">
               <van-dropdown-menu class="date_sel menu" active-color="#30AEFB" background="none">
                 <van-dropdown-item v-model="yaer" :options="yearList" @change="dateChange"/>
                 <van-dropdown-item v-model="month" :options="monthList" @change="dateChange"/>
               </van-dropdown-menu>
             </div>
-          </div>
+          </div> -->
           <div class="cash_box">
             <div class="cash_title">
               <div class="type">时间</div>
-              <div class="amount">用户</div>
-              <div class="theme">金额</div>
+              <div class="amount">{{ type == 777 ? '类型' : '用户' }}</div>
+              <div class="theme">金额(元)</div>
             </div>
             <van-list v-model="isupLoading" :finished="finished" finished-text="" @load="onLoad">
               <ul class="cash_list" v-if="profit.length>0">
                 <li class="cash_item van-hairline--bottom" v-for="item in profit" :key="item.id">
                   <div class="type">{{ item.createTime }}</div>
-                  <div class="amount">{{ showData(item) }}</div>
+                  <div class="amount">{{  type == 777 ? item.typeName :showData(item) }}</div>
                   <div class="theme">+{{ item.amount }}</div>
                 </li>
               </ul>
@@ -75,7 +75,7 @@ export default {
       phone: localStorage.getItem('phone'),
       isLoading: false,
       form: {
-        types: [1, 11],
+        types: [],
         page: 0,
         size: 20
       },
@@ -151,8 +151,23 @@ export default {
       case 12:
         this.form.types = [12]
         break
+     case 333:
+        this.form.types = [3,13]
+        break
+     case 444:
+        this.form.types = [1,11]
+        break
+     case 555:
+      this.form.types = [51, 52, 53, 54, 55, 56]
+      break
+    case 666:
+      this.form.types = [61, 62, 63, 64, 65, 66]
+      break
+    case 777:
+      this.form.types = [71, 72, 73, 74, 75, 76, 81, 82, 83, 84, 85, 86]
+      break
+      
       default:
-        this.form.types = [3, 13]
     }
     this.getData()
     this.total()
@@ -217,6 +232,17 @@ export default {
         if (res.resp_code == '000000') {
           this.isupLoading = false;
           this.profit.push(...res.result.content)
+
+          if (this.type == 777) {
+            for (const iterator of this.profit) {
+              iterator.typeName = (iterator.type < 80 && iterator.type > 70)  ? '刷卡' : (iterator.type < 90 && iterator.type > 80) ? '余额还款' : ''
+            }
+          }
+         
+
+  
+          
+          
           if (res.result.last) {
             this.finished = true;
           }
@@ -229,8 +255,18 @@ export default {
           return '刷卡分润'
         case 12:
           return '还款分润'
-        default:
+        case 333:
           return '平级管理奖'
+        case 444:
+          return '自用返现'
+       case 555:
+          return '绑卡收益'
+       case 666:
+          return '激活收益'
+       case 777:
+          return '笔数收益'
+        default:
+          return ''
       }
     },
     showData(data){

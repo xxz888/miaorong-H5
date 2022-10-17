@@ -13,7 +13,7 @@
           <img slot="icon" slot-scope="props" :src="props.active ? iconShare.active : iconShare.normal">
         </van-tabbar-item> -->
         <van-tabbar-item name="news" :to="'/profitHome'" replace>
-          <span>收益</span>
+          <span>收益中心</span>
           <img slot="icon" slot-scope="props" :src="props.active ? iconNews.active : iconNews.normal">
         </van-tabbar-item>
 

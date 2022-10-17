@@ -25,7 +25,7 @@
           立即提现
         </div>
       </div>
-      <div class="flex ml-16 mt-10">
+      <div class="flex ml-16 mt-20">
         <div class="shouyi ml-16">当日收益(元): {{+  userAccount.todayTotal | toFixed   }}</div>
         <div class="shouyi ml-16">当月收益(元): {{ +  userAccount.curMonthTotal | toFixed   }}</div>
       </div>
@@ -66,7 +66,7 @@
 
 
 
-            <li class="item" @click="next('profitType',3)">
+            <li class="item" @click="next('profitType',333)">
               <img
                 class="img60"
                 src="../../assets/profit/组 17903@2x.png"
@@ -75,7 +75,7 @@
               <p class="mt-25">平级收益</p>
             </li>
             
-            <li class="item" @click="next('profitCashback',1)">
+            <li class="item" @click="next('profitType',444)">
               <img
                 class="img60"
                 src="../../assets/profit/组 17902@2x.png"
@@ -85,9 +85,9 @@
             </li>
 
 
-          <li class="item" @click="showMsg1">
+          <li class="item" @click="next('profitType',555)">
               <img src="../../assets/profit/组 17901@2x.png" class="img60" alt="">
-              <p class="mt-25">代付收益</p>
+              <p class="mt-25">绑卡收益</p>
             </li> 
 
 
@@ -119,13 +119,13 @@
               <p>平级管理奖</p>
             </li> -->
 
-            <li class="item" @click="showMsg1">
+            <li class="item" @click="next('profitType',666)">
               <img
                 class="img60"
                 src="../../assets/profit/组 17904@2x.png"
                 alt=""
               />
-              <p class="mt-25">直推激活奖</p>
+              <p class="mt-25">激活收益</p>
             </li>
             <li
               class="item"
@@ -146,13 +146,13 @@
               <img src="../../assets/profit/rule_icon.png" alt="">
               <p>收益规则</p>
             </li> -->
-            <li class="item " @click="showMsg1">
+            <li class="item" @click="next('profitType',777)">
               <img
                 class="img60"
                 src="../../assets/profit/组 17906@2x.png"
                 alt=""
               />
-              <p class="mt-25">增值收益</p>
+              <p class="mt-25">笔数收益</p>
             </li>
 
             

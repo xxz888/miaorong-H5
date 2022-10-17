@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background:#F9FAFE ;min-height: 100vh;">
     <van-nav-bar class="agent_nav theme_bg" style="background: none;" left-arrow :border='false' title="中介模式"
                  @click-left="onClickLeft"/>
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh" loading-text="加载中...">

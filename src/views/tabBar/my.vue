@@ -65,7 +65,7 @@
               <span class="imgTitle">银行卡管理</span>
             </div>
 
-            <div class="flex2 fcc" @click="next('/pre',8)">
+            <div class="flex2 fcc" @click="tel">
               <img class="img80" src="../../assets/组 17870@2x.png" alt="" />
               <span class="imgTitle">我的推荐人</span>
             </div>
@@ -74,17 +74,6 @@
 
          <div class="my_cell_box ">
           <ul class="my_cell_list1">
-            <li class="my_cell_item van-hairline--bottom" @click="empower()">
-              <div class="left">
-                <span>{{
-                  user.empower ? "关闭中介授权" : "开启中介授权"
-                }}</span>
-              </div>
-              <div class="icon">
-                <van-icon class="icon_icon" size="16" name="arrow" />
-              </div>
-            </li>
-
             <li
               class="my_cell_item van-hairline--bottom"
               @click="next('/bill','1')"
@@ -96,6 +85,18 @@
                 <van-icon class="icon_icon" size="16" name="arrow" />
               </div>
             </li>
+            <li class="my_cell_item van-hairline--bottom" @click="empower()">
+              <div class="left">
+                <span>{{
+                  user.empower ? "关闭中介授权" : "开启中介授权"
+                }}</span>
+              </div>
+              <div class="icon">
+                <van-icon class="icon_icon" size="16" name="arrow" />
+              </div>
+            </li>
+
+     
 
             <li
               class="my_cell_item van-hairline--bottom"
@@ -109,14 +110,14 @@
               </div>
             </li>
             <!-- @click="next('/about','8')" -->
-            <li class="my_cell_item van-hairline--bottom">
+            <!-- <li class="my_cell_item van-hairline--bottom">
               <div class="left">
                 <span>关于我们</span>
               </div>
               <div class="icon">
                 <van-icon class="icon_icon" size="16" name="arrow" />
               </div>
-            </li>
+            </li> -->
             <li class="my_cell_item" @click="next('/set', '8')">
               <div class="left">
                 <span>设置</span>
@@ -452,6 +453,7 @@ export default {
 <style scoped>
 .my{
   background: #F9F9F9;
+  min-height: 100vh;
 }
 .my_header {
   width: 100%;

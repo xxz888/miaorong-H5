@@ -9,7 +9,7 @@
         <a :href="'tel:'+prepreUserPhone">
           <div class="top_flex">
             <p>{{ prepreUserPhone |dataHidden }}</p>
-            <span class="pr_bg theme">联系上级</span>
+            <!-- <span class="pr_bg theme">联系上级</span> -->
           </div>
           <div class="text">我是您的推荐人，可以为您提供推
             广市场和功能使用等服务
@@ -280,8 +280,8 @@ export default {
 
 .contact_top {
   width: 100%;
-  height: 220px;
-  background: url("../../assets/contact/kf_top_bg.png") no-repeat;
+  height: 200px;
+  background: #30AEFB;
   background-size: 100% 100%;
   display: flex;
   justify-content: center;

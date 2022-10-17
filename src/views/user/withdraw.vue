@@ -578,7 +578,7 @@ export default {
 
 .caption {
   font-size: 16px;
-  border-left: 5px solid rgb(208, 104, 84);
+  border-left: 5px solid #1989fa;
   margin: 30px 0px 10px 25px;
   padding-left: 15px;
 }

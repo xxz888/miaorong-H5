@@ -29,22 +29,36 @@
         </div>
         <div class="menu_box">
           <ul class="menu_list">
-<!--            <li class="menu_item" @click="next('/agent',8)">-->
-            <li class="menu_item" @click="teamManager()">
-              <img  src="../../assets/homeItem1.png" alt="">
-         
+            <li class="menu_item"  @click="showMsg1">
+              <img  style="width: 25px;height:25px;" src="../../assets/homeItem1.png" alt="">
+              <div style="margin-top: 10px;">花呗收款</div>
             </li>
             <li class="menu_item" @click="next('/subordinateUser',8)">
-              <img  src="../../assets/homeItem2.png" alt="">
+              <img  style="width: 25px;height:25px;" src="../../assets/homeItem2.png" alt="">
+              <div style="margin-top: 10px;">中介代还</div>
             </li>
-              <!-- <li class="menu_item" @click="policyManager()">
-              <img src="../../assets/home/menu_creditcard_icon.png" alt="">
-              <div class="">代理政策</div>
-            </li> -->
-            <li class="menu_item" @click="operationVideo()">
-              <img src="../../assets/homeItem3.png" alt="">
+            <li class="menu_item" @click="showMsg1">
+              <img  style="width: 25px;height:25px;" src="../../assets/homeItem3.png" alt="">
+              <div style="margin-top: 10px;">在线办卡</div>
             </li>
           </ul>
+
+          <ul class="menu_list" style="margin-top: 20px;">
+            <li class="menu_item" @click="showMsg1">
+              <img  style="width: 25px;height:25px;" src="../../assets/homeItem4.png" alt="">
+              <div style="margin-top: 10px;">常见问题</div>
+            </li>
+            <li class="menu_item" @click="teamManager()">
+              <img  style="width: 25px;height:25px;" src="../../assets/homeItem5.png" alt="">
+              <div style="margin-top: 10px;">团队管理</div>
+            </li>
+            <li class="menu_item" @click="operationVideo()">
+              <img  style="width: 25px;height:25px;" src="../../assets/homeItem6.png" alt="">
+              <div style="margin-top: 10px;">操作视频</div>
+            </li>
+          </ul>
+
+
         </div>
         <div class="cont mt-15">
           <div class="news">
@@ -84,7 +98,7 @@
             <div  @click="$router.push('/person')" class="skip_share">
          
             </div>
-            <div @click="showMsg1" class="skip_item">
+            <div @click="next('/library','8')" class="skip_item">
         
             </div>
             <div @click="showMsg1" class="skip_material">
