@@ -282,7 +282,7 @@ opacity: 1;
 
 .login_logo {
   width: 130px;
-  margin-top: 60px;
+  margin-top: 40px;
   margin-bottom: 5px;
   background-size: cover;
   
@@ -293,10 +293,9 @@ opacity: 1;
 }
 
 .login {
-   background: url('../assets/login_bg.png') no-repeat ;
-   background-size: 100% 100%;
-
-  height: 100vh;
+   background: url('../assets/login_bg.png') no-repeat   ;
+   height: 100vh;
+   background-size:100% 100%
 }
 
 .top {
