@@ -79,10 +79,10 @@ export default {
 </script>
 <style scoped>
 .online_channel .top {
-  background: url("../../assets/online/channel_top_bg.png") center no-repeat;
+  background: #30AEFB;
   background-size: 100% 100%;
   width: 100%;
-  height: 155px;
+  height: 110px;
   position: relative;
   font-size: 18px;
   display: flex;
@@ -115,7 +115,7 @@ export default {
 }
 
 .channel_item {
-  background: #fff;
+  background: #f8f8f8;
   font-size: 16px;
   color: #121212;
   border-radius: 12px;

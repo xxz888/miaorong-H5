@@ -29,7 +29,7 @@
         </div>
         <div class="menu_box">
           <ul class="menu_list">
-            <li class="menu_item"  @click="showMsg1">
+            <li class="menu_item"  @click="huabeiAction">
               <img  style="width: 25px;height:25px;" src="../../assets/homeItem1.png" alt="">
               <div style="margin-top: 10px;">花呗收款</div>
             </li>
@@ -401,6 +401,10 @@ return;
       //操作视频
     operationVideo() {
       this.$router.push({ name: "operationVideo" });
+    },
+     //花呗
+     huabeiAction() {
+      this.$router.push({ name: "huabei" });
     },
     // 下拉刷新
     onRefresh() {

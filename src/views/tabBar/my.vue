@@ -65,7 +65,7 @@
               <span class="imgTitle">银行卡管理</span>
             </div>
 
-            <div class="flex2 fcc" @click="tel">
+            <div class="flex2 fcc" @click="tel" v-if="prepreUserPhone!=''">
               <img class="img80" src="../../assets/组 17870@2x.png" alt="" />
               <span class="imgTitle">我的推荐人</span>
             </div>

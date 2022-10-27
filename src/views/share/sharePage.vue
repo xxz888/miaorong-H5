@@ -39,7 +39,7 @@ export default {
   created() {
     this.phone = localStorage.getItem("phone")
     this.getBrand()
-    debugger
+    
   },
   beforeRouteEnter(to, from, next) {
     sessionStorage.setItem('routerFrom', from.name)

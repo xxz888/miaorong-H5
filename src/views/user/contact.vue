@@ -34,7 +34,7 @@
           <img src="../../assets/contact/right.png" alt="">
         </div>
       </div> -->
-      <div class="item" @click="tel()">
+      <!-- <div class="item" @click="tel()">
         <div class="item_left">
           <img src="../../assets/contact/phone_btn_online_icon.png" alt="">
           <span>电话客服 </span>
@@ -42,7 +42,7 @@
         <div class="item_right">
           <img src="../../assets/contact/right.png" alt="">
         </div>
-      </div>
+      </div> -->
       <div class="item" @click="copyShaneUrl()">
         <div class="item_left">
           <img src="../../assets/contact/wx.png" alt="">
