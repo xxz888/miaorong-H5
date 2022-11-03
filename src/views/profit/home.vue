@@ -8,7 +8,6 @@
 
 
 
-
     <div>
       <div class=" ">
 
@@ -17,7 +16,7 @@
     <div class="titleBg">
       <div class="flex jc-sb">
         <div class="ml-16">
-          <div class="ketixian">可提现(元)</div>
+          <div class="ketixian" @click="showDialogAction">可提现(元)</div>
           <div class="ketixianjine"> {{ userAccount.currentBalance |toFixed }}</div>
         </div>
 
@@ -275,6 +274,30 @@
       </div>
     </div> -->
     <tabbar></tabbar>
+
+
+    <van-dialog  v-model:show="showDialog"  cancel-button-text="恢复" show-cancel-button @cancel="cancelAction" @confirm="confirmAction">
+  <van-cell-group inset>
+    <van-field
+      v-model="tf1"
+      name="可提现:"
+      label="可提现:"
+      placeholder="可提现"
+    />
+    <van-field
+      v-model="tf2"
+      name="当日收益"
+      label="当日收益"
+      placeholder="当日收益"
+    />
+    <van-field
+      v-model="tf3"
+      name="当月收益"
+      label="当月收益"
+      placeholder="当月收益"
+    />
+  </van-cell-group>
+</van-dialog>
   </div>
 </template>
 
@@ -283,7 +306,10 @@ import tabbar from '@/components/tabbar'
 import {
   NavBar,
   PullRefresh,
-  Icon
+  Icon,
+  Dialog,
+  Field,
+  CellGroup
 } from 'vant';
 import {
   newsQuery,
@@ -292,7 +318,6 @@ import {
 import {
   getAccountQuery, getSumrebater, userInfoQuery, getUserHead
 } from "@/api/user";
-
 export default {
   data() {
     return {
@@ -306,9 +331,14 @@ export default {
       userAvatar: '',
       allRebate: 0,
       user: {},
+      showDialog:false,
+      tf1:'',
+      tf2:'',
+      tf3:'',
       userAccount: {
         curMonthTotal:0,
-        todayTotal:0
+        todayTotal:0,
+        currentBalance:0
       },
     };
   },
@@ -316,7 +346,12 @@ export default {
     tabbar,
     [NavBar.name]: NavBar,
     [PullRefresh.name]: PullRefresh,
-    [Icon.name]: Icon
+    [Icon.name]: Icon,
+    [Dialog.Component.name]: Dialog.Component,
+    [Field.name]: Field,
+    [CellGroup.name]: CellGroup,
+
+
   },
   created() {
     this._newsQuery()
@@ -325,6 +360,29 @@ export default {
     this._userInfoQuery()
   },
   methods: {
+    cancelAction(){
+      this._getAccountQuery()
+},
+    confirmAction(){
+      if (this.tf1 == '') {
+        this.tf1 = 0;
+      }
+      if (this.tf2 == '') {
+        this.tf2 = 0;
+      }
+      if (this.tf3 == '') {
+        this.tf3= 0;
+      }
+            this.userAccount.currentBalance = parseFloat(this.tf1);
+            this.userAccount.todayTotal =parseFloat(this.tf2);
+            this.userAccount.curMonthTotal = parseFloat(this.tf3);
+      this.tf1 = '';
+      this.tf2 = '';
+      this.tf3 = '';
+    },
+    showDialogAction(){
+      this.showDialog = true;
+    },
     onClickLeft() {
       this.publicJs.back();
     },

@@ -10,8 +10,8 @@
           <ul>
             <li class="item">
               <div class="left">
-                <div class="title">
-                  <span>提现总金额 {{ totalAmount|toFixed }} （元）</span>
+                <div class="title" @click="showDialog1Action">
+                  <span>提现总金额 {{ totalAmount | toFixed}} （元）</span>
                 </div>
               </div>
               <div class="right"></div>
@@ -20,7 +20,7 @@
         </div>
         <div class="profit_share_cont">
           <div class="profit_type_top">
-            <div class="profit_type_detail_top_bg">
+            <div class="profit_type_detail_top_bg" @click="showDialog2Action">
               <div>时间</div>
               <div>金额</div>
               <div>状态</div>
@@ -41,6 +41,45 @@
         </div>
       </div>
     </van-pull-refresh>
+
+
+    <van-dialog  v-model:show="showDialog1"  cancel-button-text="恢复界面" show-cancel-button @cancel="cancelAction1" @confirm="confirmAction1">
+
+  <van-cell-group inset>
+    <van-field
+      v-model="tf1"
+      name="提现总金额:"
+      label="提现总金额:"
+      placeholder="提现总金额"
+    />
+
+  </van-cell-group>
+</van-dialog>
+
+
+    <van-dialog  v-model:show="showDialog2"  cancel-button-text="恢复界面" confirm-button-text="增加一条" show-cancel-button @cancel="cancelAction2" @confirm="confirmAction2">
+  <van-cell-group inset>
+    <van-field
+      v-model="tf2"
+      name="时间:"
+      label="时间:"
+      placeholder="时间"
+    />
+    <van-field
+      v-model="tf3"
+      name="金额"
+      label="金额"
+      placeholder="金额"
+    />
+    <van-field
+      v-model="tf4"
+      name="状态"
+      label="状态"
+      placeholder="0处理中 1已成功 2已失败"
+    />
+  </van-cell-group>
+</van-dialog>
+
   </div>
 </template>
 
@@ -53,7 +92,10 @@ import {
   DropdownItem,
   List,
   empty,
-  Button
+  Button,
+  Dialog,
+  Field,
+  CellGroup
 } from 'vant';
 import {withdrawOrderList} from "@/api/profit";
 
@@ -68,7 +110,15 @@ export default {
       isLoading: false,
       profit: [],
       isupLoading: false,
-      finished: false
+      finished: false,
+      showDialog1:false,
+      showDialog2:false,
+      tf1:'',
+      tf2:'',
+      tf3:'',
+      tf4:'',
+
+
     }
   },
   components: {
@@ -79,12 +129,64 @@ export default {
     [DropdownItem.name]: DropdownItem,
     [List.name]: List,
     [empty.name]: empty,
-    [Button.name]: Button
+    [Button.name]: Button,
+    [Dialog.Component.name]: Dialog.Component,
+    [Field.name]: Field,
+    [CellGroup.name]: CellGroup,
+
   },
   created() {
-    this.totalAmount = this.$route.params.type
+    if (this.$route.params.type) {
+      this.totalAmount = parseFloat(this.$route.params.type)
+    }else{
+      this.totalAmount = 0;
+    }
   },
+  /**
+ *  case 0:
+          return '处理中'
+        case 1:
+          return '已成功'
+        case 2:
+          return '已失败'
+        default:
+          return '未知状态'
+ */
   methods: {
+    showDialog1Action(){
+      this.showDialog1 = true;
+    },
+    showDialog2Action(){
+      this.showDialog2 = true;
+    },
+
+
+    cancelAction1(){
+      this.totalAmount = parseFloat(this.$route.params.type)
+    },
+    confirmAction1(){
+      if (this.tf1 == '') {
+        this.tf1 = 0;
+      }
+      this.totalAmount = parseFloat(this.tf1);
+      this.tf1 = '';
+    },
+
+
+    cancelAction2(){
+      window.location.reload() 
+   },
+    confirmAction2(){
+      if (this.tf3 == '') {
+        this.tf3 = 0;
+      }
+      
+      this.profit.push({'createTime':this.tf2,'amount':parseFloat(this.tf3),'orderStatus':parseInt(this.tf4)})
+      console.log(this.profit);
+      this.tf2 = '';
+      this.tf3 = '';
+      this.tf4 = '';
+    },
     onClickLeft() {
       this.publicJs.back();
     },
