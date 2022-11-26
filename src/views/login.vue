@@ -216,7 +216,8 @@ regPwd1:''
             localStorage.setItem("userName", res.result.fullname);
             localStorage.setItem("loginT", true);
             localStorage.setItem('brandId', res.result.brandId)
-            this.deviceId();
+            // this.deviceId();
+            localStorage.setItem("kd_webapp_deviceId", 'ios');
             Cookies.set("kd_l_phone", this.phone);
 
             sessionStorage.setItem("userName", res.result.fullname);
@@ -226,21 +227,21 @@ regPwd1:''
         })
       }
     },
-    deviceId() {
-      const platform = Math.ceil(navigator.platform.length / 3);
-      let str = "";
-      let num = 0;
-      const arr = returnCitySN["cip"].split(".");
-      arr.forEach((item, i) => {
-        if (i != arr.length - 1) {
-          str += item + navigator.platform.substring(num, num + platform);
-          num += platform;
-        } else {
-          str += item;
-        }
-      });
-      localStorage.setItem("kd_webapp_deviceId", str);
-    },
+    // deviceId() {
+    //   const platform = Math.ceil(navigator.platform.length / 3);
+    //   let str = "";
+    //   let num = 0;
+    //   const arr = returnCitySN["cip"].split(".");
+    //   arr.forEach((item, i) => {
+    //     if (i != arr.length - 1) {
+    //       str += item + navigator.platform.substring(num, num + platform);
+    //       num += platform;
+    //     } else {
+    //       str += item;
+    //     }
+    //   });
+    //   localStorage.setItem("kd_webapp_deviceId", str);
+    // },
     pull() {
       this.$router.push({name: "pull"});
     },

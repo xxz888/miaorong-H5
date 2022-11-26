@@ -29,15 +29,21 @@ const service = axios.create({
 const platform = Math.ceil(navigator.platform.length / 3)
 let str = '';
 let num = 0;
-const arr = returnCitySN["cip"].split('.')
-arr.forEach((item, i) => {
-  if (i != arr.length - 1) {
-    str += item + navigator.platform.substring(num, num + platform)
-    num += platform
-  } else {
-    str += item
-  }
-})
+
+// if (returnCitySN) {
+//   const arr = returnCitySN["cip"].split('.')
+// arr.forEach((item, i) => {
+//   if (i != arr.length - 1) {
+//     str += item + navigator.platform.substring(num, num + platform)
+//     num += platform
+//   } else {
+//     str += item
+//   }
+// })
+
+// }else{
+//   str = '123'
+// }
 
 service.interceptors.request.use(
   config => {
@@ -46,8 +52,12 @@ service.interceptors.request.use(
     if (localStorage.getItem('token') != null) {
       config.headers['authToken'] = localStorage.getItem('token') // 让每个请求携带自定义token 请根据实际情况自行修改
     }
-    let deviceId = localStorage.getItem('deviceId') || str
-    config.headers['deviceId'] = deviceId
+    
+    // let deviceId = localStorage.getItem('kd_webapp_deviceId') || str
+    // if (!deviceId) {
+    //   deviceId = ''
+    // }
+    config.headers['deviceId'] = 'ios'
     return config
   },
   error => {
