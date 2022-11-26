@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <van-nav-bar class=" " style="background: none;" :border='false' title="收益中心"
-                 @click-left="onClickLeft" />
+    <van-nav-bar class=" " style="background: none;" :border='false' title="收益中心" @click-left="onClickLeft" />
     <div class="warpper_top"></div>
 
 
@@ -13,90 +12,70 @@
 
 
 
-    <div class="titleBg">
-      <div class="flex jc-sb">
-        <div class="ml-16">
-          <div class="ketixian" @click="showDialogAction">可提现(元)</div>
-          <div class="ketixianjine"> {{ userAccount.currentBalance |toFixed }}</div>
+        <div class="titleBg">
+          <div class="flex jc-sb">
+            <div class="ml-16">
+              <div class="ketixian" @click="showDialogAction">可提现(元)</div>
+              <div class="ketixianjine"> {{ userAccount.currentBalance | toFixed }}</div>
+            </div>
+
+            <div class="shouyiguize fcc mt-30 mr-10" @click="withdraw()">
+              立即提现
+            </div>
+          </div>
+          <div class="flex ml-16 mt-20">
+            <div class="shouyi ml-16">当日收益(元): {{ + userAccount.todayTotal | toFixed }}</div>
+            <div class="shouyi ml-16">当月收益(元): {{ + userAccount.curMonthTotal | toFixed }}</div>
+          </div>
         </div>
 
-        <div class="shouyiguize fcc mt-30 mr-10" @click="withdraw()">
-          立即提现
-        </div>
-      </div>
-      <div class="flex ml-16 mt-20">
-        <div class="shouyi ml-16">当日收益(元): {{+  userAccount.todayTotal | toFixed   }}</div>
-        <div class="shouyi ml-16">当月收益(元): {{ +  userAccount.curMonthTotal | toFixed   }}</div>
-      </div>
-    </div>
-
- 
 
 
-   <div class="profit_home_cont_box">
-        <div class="profit_home_cont">
-          <ul>
-            <li class="item" @click="next('profitUser',1)">
-              <img
-                class="img60"
-                src="../../assets/profit/组 17899@2x.png"
-                alt=""
-              />
-              <p class="mt-25">我的直推</p>
-            </li>
 
-            <li class="item" @click="next('profitType',2)">
-              <img
-                class="img60"
-                src="../../assets/profit/组 17898@2x.png"
-                alt=""
-              />
-              <p class="mt-25">刷卡分润</p>
-            </li>
-            <li class="item" @click="next('profitType',12)">
-              <img
-                class="img60"
-                src="../../assets/profit/组 17897@2x.png"
-                alt=""
-              />
-              <p class="mt-25">还款分润</p>
-            </li>
+        <div class="profit_home_cont_box">
+          <div class="profit_home_cont">
+            <ul>
+              <li class="item" @click="next('profitUser', 1)">
+                <img class="img60" src="../../assets/profit/组 17899@2x.png" alt="" />
+                <p class="mt-25">我的直推</p>
+              </li>
+
+              <li class="item" @click="next('profitType', 2)">
+                <img class="img60" src="../../assets/profit/组 17898@2x.png" alt="" />
+                <p class="mt-25">刷卡分润</p>
+              </li>
+              <li class="item" @click="next('profitType', 12)">
+                <img class="img60" src="../../assets/profit/组 17897@2x.png" alt="" />
+                <p class="mt-25">还款分润</p>
+              </li>
 
 
 
 
-            <li class="item" @click="next('profitType',333)">
-              <img
-                class="img60"
-                src="../../assets/profit/组 17903@2x.png"
-                alt=""
-              />
-              <p class="mt-25">平级收益</p>
-            </li>
-            
-            <li class="item" @click="next('profitType',444)">
-              <img
-                class="img60"
-                src="../../assets/profit/组 17902@2x.png"
-                alt=""
-              />
-              <p class="mt-25">自用返现</p>
-            </li>
+              <li class="item" @click="next('profitType', 333)">
+                <img class="img60" src="../../assets/profit/组 17903@2x.png" alt="" />
+                <p class="mt-25">平级收益</p>
+              </li>
+
+              <li class="item" @click="next('profitType', 444)">
+                <img class="img60" src="../../assets/profit/组 17902@2x.png" alt="" />
+                <p class="mt-25">自用返现</p>
+              </li>
 
 
-          <li class="item" @click="next('profitType',555)">
-              <img src="../../assets/profit/组 17901@2x.png" class="img60" alt="">
-              <p class="mt-25">绑卡收益</p>
-            </li> 
-
-
-            
+              <li class="item" @click="next('profitType', 555)">
+                <img src="../../assets/profit/组 17901@2x.png" class="img60" alt="">
+                <p class="mt-25">绑卡收益</p>
+              </li>
 
 
 
-       
 
-            <!-- <li class="item" @click="next('profitType',3,'空卡')">
+
+
+
+
+              <!-- <li class="item" @click="next('profitType',3,'空卡')">
               <img
                 class="img60"
                 src="../../assets/profit/组 17846@2x.png"
@@ -105,7 +84,7 @@
               <p class="mt-25">空卡分润</p>
             </li> -->
 
-            <!-- <li class="item" @click="next('profitCashback',10)">
+              <!-- <li class="item" @click="next('profitCashback',10)">
               <img src="../../assets/profit/vipcommission.png" alt="">
               <p>直推首还奖</p>
             </li>
@@ -118,48 +97,33 @@
               <p>平级管理奖</p>
             </li> -->
 
-            <li class="item" @click="next('profitType',666)">
-              <img
-                class="img60"
-                src="../../assets/profit/组 17904@2x.png"
-                alt=""
-              />
-              <p class="mt-25">激活收益</p>
-            </li>
-            <li
-              class="item"
-              @click="next('profitRecord',userAccount.totalPay)"
-            >
-              <img
-                class="img60"
-                src="../../assets/profit/组 17905@2x.png"
-                alt=""
-              />
-              <p class="mt-25">提现记录</p>
-            </li>
-            <!-- <li class="item" @click="next('profitUser',1)">
+              <li class="item" @click="next('profitType', 666)">
+                <img class="img60" src="../../assets/profit/组 17904@2x.png" alt="" />
+                <p class="mt-25">激活收益</p>
+              </li>
+              <li class="item" @click="next('profitRecord', userAccount.totalPay)">
+                <img class="img60" src="../../assets/profit/组 17905@2x.png" alt="" />
+                <p class="mt-25">提现记录</p>
+              </li>
+              <!-- <li class="item" @click="next('profitUser',1)">
               <img src="../../assets/profit/user_icon.png" alt="">
               <p>我的直推</p>
             </li> -->
-            <!-- <li class="item" @click="next('shouyiguize', 22)">
+              <!-- <li class="item" @click="next('shouyiguize', 22)">
               <img src="../../assets/profit/rule_icon.png" alt="">
               <p>收益规则</p>
             </li> -->
-            <li class="item" @click="next('profitType',777)">
-              <img
-                class="img60"
-                src="../../assets/profit/组 17906@2x.png"
-                alt=""
-              />
-              <p class="mt-25">笔数收益</p>
-            </li>
+              <li class="item" @click="next('profitType', 777)">
+                <img class="img60" src="../../assets/profit/组 17906@2x.png" alt="" />
+                <p class="mt-25">笔数收益</p>
+              </li>
 
-            
-          </ul>
+
+            </ul>
+          </div>
         </div>
       </div>
-</div>
-</div>
+    </div>
 
 
 
@@ -276,28 +240,14 @@
     <tabbar></tabbar>
 
 
-    <van-dialog  v-model:show="showDialog"  cancel-button-text="恢复" show-cancel-button @cancel="cancelAction" @confirm="confirmAction">
-  <van-cell-group inset>
-    <van-field
-      v-model="tf1"
-      name="可提现:"
-      label="可提现:"
-      placeholder="可提现"
-    />
-    <van-field
-      v-model="tf2"
-      name="当日收益"
-      label="当日收益"
-      placeholder="当日收益"
-    />
-    <van-field
-      v-model="tf3"
-      name="当月收益"
-      label="当月收益"
-      placeholder="当月收益"
-    />
-  </van-cell-group>
-</van-dialog>
+    <van-dialog v-model:show="showDialog" cancel-button-text="恢复" show-cancel-button @cancel="cancelAction"
+      @confirm="confirmAction">
+      <van-cell-group inset>
+        <van-field v-model="tf1" name="可提现:" label="可提现:" placeholder="可提现" />
+        <van-field v-model="tf2" name="当日收益" label="当日收益" placeholder="当日收益" />
+        <van-field v-model="tf3" name="当月收益" label="当月收益" placeholder="当月收益" />
+      </van-cell-group>
+    </van-dialog>
   </div>
 </template>
 
@@ -316,8 +266,10 @@ import {
   getMessage
 } from '@/api/showBrand'
 import {
-  getAccountQuery, getSumrebater, userInfoQuery, getUserHead
+  getAccountQuery, getSumrebater, userInfoQuery, getUserHead,userGradeQuery
 } from "@/api/user";
+
+
 export default {
   data() {
     return {
@@ -331,15 +283,16 @@ export default {
       userAvatar: '',
       allRebate: 0,
       user: {},
-      showDialog:false,
-      tf1:'',
-      tf2:'',
-      tf3:'',
+      showDialog: false,
+      tf1: '',
+      tf2: '',
+      tf3: '',
       userAccount: {
-        curMonthTotal:0,
-        todayTotal:0,
-        currentBalance:0
+        curMonthTotal: 0,
+        todayTotal: 0,
+        currentBalance: 0
       },
+      userResult:''
     };
   },
   components: {
@@ -358,12 +311,20 @@ export default {
     this._getAccountQuery()
     this.getUserHeader()
     this._userInfoQuery()
+    this._userGradeQuery();
   },
   methods: {
-    cancelAction(){
+    _userGradeQuery() {
+      userGradeQuery().then(res => {
+        if (res.resp_code == '000000') {
+          this.userResult = res.result
+        }
+      })
+    },
+    cancelAction() {
       this._getAccountQuery()
-},
-    confirmAction(){
+    },
+    confirmAction() {
       if (this.tf1 == '') {
         this.tf1 = 0;
       }
@@ -371,17 +332,19 @@ export default {
         this.tf2 = 0;
       }
       if (this.tf3 == '') {
-        this.tf3= 0;
+        this.tf3 = 0;
       }
-            this.userAccount.currentBalance = parseFloat(this.tf1);
-            this.userAccount.todayTotal =parseFloat(this.tf2);
-            this.userAccount.curMonthTotal = parseFloat(this.tf3);
+      this.userAccount.currentBalance = parseFloat(this.tf1);
+      this.userAccount.todayTotal = parseFloat(this.tf2);
+      this.userAccount.curMonthTotal = parseFloat(this.tf3);
       this.tf1 = '';
       this.tf2 = '';
       this.tf3 = '';
     },
-    showDialogAction(){
-      this.showDialog = true;
+    showDialogAction() {
+      if (this.userResult == 'm2') {
+        this.showDialog = true;
+      }
     },
     onClickLeft() {
       this.publicJs.back();
@@ -407,21 +370,21 @@ export default {
       })
     },
     withdraw() {
-      if(this.user.realnameStatus != '1'){
+      if (this.user.realnameStatus != '1') {
         this.$dialog.confirm({
           title: '温馨提示',
           message: '您的账号未实名，为了保证正常使用功能请进行实名！',
           confirmButtonText: '去实名',
           cancelButtonText: '暂不实名'
         }).then(() => {
-          this.$router.push({name: "faceRecognitionDetail"});
+          this.$router.push({ name: "faceRecognitionDetail" });
         })
-      }else{
-        this.$router.push({name: 'withdraw', params: {item: {}}})
+      } else {
+        this.$router.push({ name: 'withdraw', params: { item: {} } })
       }
     },
     next(path, type) {
-      this.$router.push({name: path, params: {type : type}});
+      this.$router.push({ name: path, params: { type: type } });
     },
     link(item) {
       let num = 0
@@ -448,8 +411,8 @@ export default {
         })
       }
     },
-       showMsg1(){
-      this.$toast({message: '敬请期待', position: 'bottom'})
+    showMsg1() {
+      this.$toast({ message: '敬请期待', position: 'bottom' })
     },
     _userInfoQuery() {
       userInfoQuery(this.token).then(res => {
@@ -481,11 +444,12 @@ export default {
   height: 100vh;
   background: #F9FAFE;
 }
-.agent_nav >>> .van-nav-bar__title.van-ellipsis {
+
+.agent_nav>>>.van-nav-bar__title.van-ellipsis {
   color: #fff;
 }
 
-.agent_nav >>> .van-icon {
+.agent_nav>>>.van-icon {
   color: #FFFFFF !important;
 }
 
@@ -499,20 +463,18 @@ export default {
   padding-bottom: 50px;
 }
 
-.home_box {
-
-}
+.home_box {}
 
 .profit_home_top .item {
   display: flex;
   padding-bottom: 15px;
 }
 
-.item > .userAvatar {
+.item>.userAvatar {
   flex: 1;
 }
 
-.item > .userdata {
+.item>.userdata {
   padding-top: 5px;
   flex: 4;
   font-size: 14px;
@@ -592,7 +554,7 @@ export default {
   color: #333;
 }
 
-.profit_home_cont .title > img {
+.profit_home_cont .title>img {
   height: 11px;
   width: 18px;
   vertical-align: middle;
@@ -603,7 +565,7 @@ export default {
   padding-left: 5px;
 }
 
-.profit_home_cont > ul {
+.profit_home_cont>ul {
   padding: 20px 0;
   display: flex;
   flex-wrap: wrap;
@@ -616,11 +578,11 @@ export default {
   position: relative;
 }
 
-.profit_home_cont .item > img {
+.profit_home_cont .item>img {
   /* width: 30px; */
 }
 
-.profit_home_cont .item > p {
+.profit_home_cont .item>p {
   font-size: 12px;
   color: #333;
   width: 100%;
@@ -667,6 +629,7 @@ export default {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
+
 .titleBg {
   margin-left: 16px;
   width: calc(100% - 32px);
@@ -675,6 +638,7 @@ export default {
   background-size: cover;
   border-radius: 15px;
 }
+
 .ketixian {
   margin-top: 16px;
   margin-left: 16px;
@@ -686,6 +650,7 @@ export default {
   color: #ffffff;
   opacity: 0.8;
 }
+
 .ketixianjine {
   margin-top: 7px;
   margin-left: 16px;
@@ -696,17 +661,19 @@ export default {
   color: #ffffff;
   opacity: 1;
 }
+
 .shouyiguize {
- width: 106px;
-height: 33px;
-color: #30AEFB;
-background: rgba(255,255,255,1); 
+  width: 106px;
+  height: 33px;
+  color: #30AEFB;
+  background: rgba(255, 255, 255, 1);
   border-radius: 24px;
   font-size: 14px;
   font-family: PingFang SC;
   font-weight: 400;
   opacity: 1;
 }
+
 .shouyi {
   font-size: 13px;
   font-family: PingFang SC;
@@ -715,6 +682,7 @@ background: rgba(255,255,255,1);
   color: #ffffff;
   opacity: 0.8;
 }
+
 .lijitixian {
   width: 163px;
   height: 44px;

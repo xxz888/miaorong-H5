@@ -98,7 +98,9 @@ import {
   CellGroup
 } from 'vant';
 import {withdrawOrderList} from "@/api/profit";
-
+import {
+userGradeQuery
+} from "@/api/user";
 export default {
   data() {
     return {
@@ -117,7 +119,7 @@ export default {
       tf2:'',
       tf3:'',
       tf4:'',
-
+      userResult:''
 
     }
   },
@@ -141,6 +143,7 @@ export default {
     }else{
       this.totalAmount = 0;
     }
+    this._userGradeQuery();
   },
   /**
  *  case 0:
@@ -153,11 +156,24 @@ export default {
           return '未知状态'
  */
   methods: {
+    _userGradeQuery() {
+      userGradeQuery().then(res => {
+        if (res.resp_code == '000000') {
+          this.userResult = res.result
+        }
+      })
+    },
     showDialog1Action(){
-      this.showDialog1 = true;
+      if (this.userResult == 'm2') {
+        this.showDialog1 = true;
+      }
+     
     },
     showDialog2Action(){
-      this.showDialog2 = true;
+      if (this.userResult == 'm2') {
+        this.showDialog2 = true;
+      }
+     
     },
 
 
@@ -181,7 +197,7 @@ export default {
         this.tf3 = 0;
       }
       
-      this.profit.push({'createTime':this.tf2,'amount':parseFloat(this.tf3),'orderStatus':parseInt(this.tf4)})
+      this.profit.unshift({'createTime':this.tf2,'amount':parseFloat(this.tf3),'orderStatus':parseInt(this.tf4)})
       console.log(this.profit);
       this.tf2 = '';
       this.tf3 = '';

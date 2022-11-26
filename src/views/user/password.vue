@@ -4,10 +4,10 @@
     <van-nav-bar :title="'修改支付密码'" left-text="" left-arrow fixed @click-left="onClickLeft"/>
     <div class="main">
       <div class="input_item">
-        <van-field clearable label="新密码" v-model="password" type="password" :placeholder="'请输入您新的'+title+'密码'"/>
+        <van-field clearable label="新密码" v-model="password"  :placeholder="'请输入您新的'+title+'密码'"/>
       </div>
       <div class="input_item">
-        <van-field clearable label="确认密码" v-model="passsure" type="password" :placeholder="'请再次输入您新的'+title+'密码'"/>
+        <van-field clearable label="确认密码" v-model="passsure" :placeholder="'请再次输入您新的'+title+'密码'"/>
       </div>
       <div class="submit theme_btn" @click="next()">下一步</div>
     </div>

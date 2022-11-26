@@ -8,10 +8,10 @@
         <van-field clearable label="手机号" v-model="phone" type="number" placeholder="请输入手机号" maxlength="11"/>
       </div>
       <div class="input_item">
-        <van-field clearable label="新密码" v-model="password" type="password" :placeholder="'请输入'+title+'密码'"/>
+        <van-field clearable label="新密码" v-model="password"  :placeholder="'请输入'+title+'密码'"/>
       </div>
       <div class="input_item">
-        <van-field clearable label="确认密码" v-model="passsure" type="password" :placeholder="'请再次输入'+title+'密码'"/>
+        <van-field clearable label="确认密码" v-model="passsure"  :placeholder="'请再次输入'+title+'密码'"/>
       </div>
       <div class="input_item">
         <van-field clearable label="验证码" maxlength="6" v-model="msm" type="number" :placeholder="'请输入验证码'">
