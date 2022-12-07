@@ -27,23 +27,22 @@ const service = axios.create({
 })
 
 const platform = Math.ceil(navigator.platform.length / 3)
-let str = '';
-let num = 0;
 
-// if (returnCitySN) {
-//   const arr = returnCitySN["cip"].split('.')
-// arr.forEach((item, i) => {
-//   if (i != arr.length - 1) {
-//     str += item + navigator.platform.substring(num, num + platform)
-//     num += platform
-//   } else {
-//     str += item
-//   }
-// })
 
-// }else{
-//   str = '123'
-// }
+
+var arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+
+function createDeviceId() {
+  var a = new Date().getTime() * 1000000 + Math.round(Math.random() * 1000000)
+  return toHex(a)
+}
+
+function toHex(num) {
+  if (num < 16) return num
+  return toHex(Math.ceil(num / 16)) + arr[num % 16]
+}
+
+
 
 service.interceptors.request.use(
   config => {
@@ -53,13 +52,18 @@ service.interceptors.request.use(
       config.headers['authToken'] = localStorage.getItem('token') // 让每个请求携带自定义token 请根据实际情况自行修改
     }
     
-    // let deviceId = localStorage.getItem('kd_webapp_deviceId') || str
-    // if (!deviceId) {
-    //   deviceId = ''
-    // }
-    config.headers['deviceId'] = 'ios'
+    let deviceId = localStorage.getItem('did')
+    if (!deviceId) {
+      deviceId = createDeviceId()
+      localStorage.setItem('did', deviceId)
+    }
+    config.headers['platform'] = 'h5'
+    config.headers['deviceId'] = deviceId
     return config
   },
+
+
+  
   error => {
     store.commit('closeLoading')
     //  这里处理一些请求出错的情况
